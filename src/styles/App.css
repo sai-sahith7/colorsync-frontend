@@ -1,0 +1,276 @@
+:root {
+  --primary-color: #6c5ce7;
+  --accent-color: #a55eea;
+  --background-dark: #1a1a2e;
+  --card-background: #16213e;
+  --text-primary: #ffffff;
+  --text-secondary: #a8a8b3;
+  --error-color: #ff6b6b;
+  --success-color: #1dd1a1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--background-dark);
+  color: var(--text-primary);
+}
+
+.app {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    var(--background-dark) 0%,
+    #0f0f1e 100%
+  );
+  z-index: -1;
+}
+
+.header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 26, 46, 0.9) 0%,
+    rgba(26, 26, 46, 0.8) 100%
+  );
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.search-container {
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.search-button {
+  padding: 0 2rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.search-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+}
+
+.button-icon {
+  transition: transform 0.3s ease;
+}
+
+.search-button:hover .button-icon {
+  transform: translateX(5px);
+}
+
+.error-message {
+  color: var(--error-color);
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: rgba(255, 107, 107, 0.1);
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .input-group {
+    flex-direction: column;
+  }
+
+  .search-button {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+  }
+}
+
+/* more styling */
+
+.search-container {
+  animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.background-animation::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(108, 92, 231, 0.1) 40%,
+    transparent 70%
+  );
+  animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Add hover effects to product cards */
+.product-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(108, 92, 231, 0.1) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.product-card:hover::before {
+  transform: translateX(100%);
+}
+
+/* Add loading shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* Responsive improvements */
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .search-input,
+  .search-button {
+    font-size: 0.9rem;
+  }
+
+  .product-card {
+    border-radius: 12px;
+  }
+
+  .product-info {
+    padding: 1rem;
+  }
+
+  .color-picker {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Add focus styles for accessibility */
+.search-input:focus,
+.color-picker:focus,
+.search-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.5);
+}
+
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}

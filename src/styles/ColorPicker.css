@@ -1,0 +1,31 @@
+.color-picker-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.color-picker {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: none;
+}
+
+.color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-picker::-webkit-color-swatch {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.color-value {
+  font-family: monospace;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}

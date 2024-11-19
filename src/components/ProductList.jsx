@@ -1,5 +1,6 @@
 import React from "react";
 import ProductCard from "./ProductCard";
+import "../styles/ProductList.css";
 
 const ProductList = ({ products }) => {
   return (
@@ -9,7 +10,12 @@ const ProductList = ({ products }) => {
           <ProductCard key={product.productId} product={product} />
         ))
       ) : (
-        <p>No products found. Try another keyword or color.</p>
+        <div className="no-products">
+          <div className="empty-state">
+            <span className="empty-icon">🔍</span>
+            <p>No products found. Try another keyword or color.</p>
+          </div>
+        </div>
       )}
     </div>
   );
