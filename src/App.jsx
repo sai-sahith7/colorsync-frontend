@@ -22,7 +22,7 @@ const App = () => {
       setError(null);
       const modifiedColor = hexCode.slice(1);
       const response = await fetch(
-        `https://color-sync.azurewebsites.net/search?keyword=${keyword}&color=${modifiedColor}`
+        `https://a7bd-2409-40f4-35-f6db-a1f5-b407-1687-c307.ngrok-free.app/search?keyword=${keyword}&color=${modifiedColor}`
       );
       const data = await response.json();
       setProducts(data.products);
