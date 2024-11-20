@@ -22,7 +22,13 @@ const App = () => {
       setError(null);
       const modifiedColor = hexCode.slice(1);
       const response = await fetch(
-        `https://a7bd-2409-40f4-35-f6db-a1f5-b407-1687-c307.ngrok-free.app/search?keyword=${keyword}&color=${modifiedColor}`
+        `https://a686-2409-40f4-35-f6db-a1f5-b407-1687-c307.ngrok-free.app/search?keyword=${keyword}&color=${modifiedColor}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
       const data = await response.json();
       setProducts(data.products);
